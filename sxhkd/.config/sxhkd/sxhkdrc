@@ -24,6 +24,28 @@ super + Delete
 
 
 #
+# multimedia keys
+#
+
+# screen backlight
+XF86MonBrightness{Down,Up}
+	xbacklight -{dec,inc} 10
+
+# toggle mute volume
+XF86AudioMute
+	pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+# lower/raise volume
+XF86Audio{Lower,Raise}Volume
+	pactl set-sink-mute @DEFAULT_SINK@ false; \
+	pactl set-sink-volume @DEFAULT_SINK@ {-,+}5%
+
+# media control
+XF86Audio{Prev,Play,Next}
+	playerctl {previous,play-pause,next}
+
+
+#
 # bspwm hotkeys
 #
 
