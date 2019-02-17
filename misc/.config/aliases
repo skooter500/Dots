@@ -1,0 +1,39 @@
+# Set of shell aliases
+# Meant to be sourced by interactive POSIX shells (ie. from .bashrc and .zshrc)
+
+
+# diff
+alias diff='diff --color=auto'
+
+# free
+alias free='free -h'
+
+# grep
+alias grep='grep --color=auto'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+
+# ls
+alias ls='ls --color=auto'
+alias ll='ls -AFhl'
+alias la='ls -A'
+
+# mkdir
+alias mkdir='mkdir -pv'
+
+# mv
+alias mv='mv -i'
+
+# printenv
+alias printenv='printenv | sort'
+
+# python
+alias py='python'
+
+# rm
+alias rm='rm -I'
+alias rr='rm -r'
+
+# tree
+alias tree='tree -l'
+alias treea='tree -a -I .git'
