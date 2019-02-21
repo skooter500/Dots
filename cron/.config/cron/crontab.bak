@@ -1,0 +1,5 @@
+# backup crontab
+*/15	*	*	*	*	crontab -l > ${HOME}/dots/cron/.config/cron/crontab.bak
+
+# empty old files from trash
+0	*	*	*	*	trash-empty 30

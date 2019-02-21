@@ -1,3 +1,6 @@
+# additions to path
+PATH	DEFAULT="${PATH}:${HOME}/bin"
+
 # xdg base directories
 XDG_CACHE_HOME	DEFAULT="${HOME}/.cache"
 XDG_CONFIG_HOME	DEFAULT="${HOME}/.config"
