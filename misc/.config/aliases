@@ -2,6 +2,9 @@
 # Meant to be sourced by interactive POSIX shells (ie. from .bashrc and .zshrc)
 
 
+# cp
+alias c-='cp -i'
+
 # diff
 alias diff='diff --color=auto'
 

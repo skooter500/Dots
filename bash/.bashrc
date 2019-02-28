@@ -9,5 +9,9 @@
 source "$XDG_CONFIG_HOME/aliases"
 source "$XDG_CONFIG_HOME/functions"
 
+# prevent "a.txt > b.txt" from overwriting
+# use "a.txt >| b.txt" to force overwite
+set -o noclobber
+
 # prompt
 PS1='[\u@\h \W]\$ '
