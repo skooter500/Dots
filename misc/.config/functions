@@ -1,9 +1,30 @@
+# bc
+# bc calculator one-line non-interactive mode
+bc1() {
+    echo "$@" | bc
+}
+
+
+# mkdir / cd
+# Make a directory and change into it
+# All arguments are given to mkdir
+# Only the last argument is given to cd
+mkcd() {
+    mkdir "$@"
+    cd "${@: -1}"
+}
+
+
 # sort
-# sort files in place
+# Sort files in place
+# Allows multiple files
+# Any argument starting with '-' is treated as a flag
+#   and used on all calls to 'sort'
 sortip() {
     flags=""
     files=""
 
+    # separate flags and files
     for arg in $@; do
         if [[ ${arg::1} == '-' ]] ; then
             flags="$flags $arg"
