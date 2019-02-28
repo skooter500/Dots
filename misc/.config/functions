@@ -1,0 +1,18 @@
+# sort
+# sort files in place
+sortip() {
+    flags=""
+    files=""
+
+    for arg in $@; do
+        if [[ ${arg::1} == '-' ]] ; then
+            flags="$flags $arg"
+        else
+            files="$files $arg"
+        fi
+    done
+
+    for file in $files; do
+        sort $flags -o $file $file
+    done
+}
