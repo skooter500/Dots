@@ -1,0 +1,18 @@
+#! /bin/sh -e
+
+# Removes old files.
+# Usage: ibm AGE [DIRECTORY]...
+# Uses 'find' to delete files that haven't been changed in AGE days.
+# Does not delete the DIRECTORY(s).
+# If no DIRECTORY is given, the working directory is used.
+
+if [ $# -lt 1 ]; then
+	echo "Usage: $0 AGE [DIRECTORY]..."
+	exit 1
+fi
+
+dirs=${@:2}
+dirs=${dirs:-$PWD}
+for dir in $dirs; do
+	find $dir -ctime +$1 ! -path $dir -delete
+done

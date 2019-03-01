@@ -3,3 +3,7 @@
 
 # empty old files from trash
 0	*	*	*	*	trash-empty 30
+# similarly, empty emacs backups and auto-saves
+0	*	*	*	*	ibm 7 ${HOME}/.emacs.d/auto-saves
+0	*	*	*	*	ibm 7 ${HOME}/.emacs.d/backups/per-save
+0	*	*	*	*	ibm 30 ${HOME}/.emacs.d/backups/per-session
