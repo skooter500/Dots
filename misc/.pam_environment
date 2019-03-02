@@ -1,14 +1,15 @@
 # Environment variables
 # Syntax defined in 'pam_env.conf' man page
 # (Note: end of line comments are not allowed)
+# (Note: ${PATH} is not guaranteed to be available; use @{PATH} instead)
 
 # additions to path
-PATH    DEFAULT="${PATH}:${HOME}/bin"
+PATH    DEFAULT="${PATH}:@{HOME}/bin"
 
 # xdg base directories
-XDG_CACHE_HOME  DEFAULT="${HOME}/.cache"
-XDG_CONFIG_HOME DEFAULT="${HOME}/.config"
-XDG_DATA_HOME   DEFAULT="${HOME}/.local/share"
+XDG_CACHE_HOME  DEFAULT="@{HOME}/.cache"
+XDG_CONFIG_HOME DEFAULT="@{HOME}/.config"
+XDG_DATA_HOME   DEFAULT="@{HOME}/.local/share"
 
 # default applications
 BROWSER='chromium'
