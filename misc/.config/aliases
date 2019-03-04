@@ -38,5 +38,5 @@ alias rm='rm -I'
 alias rr='rm -r'
 
 # tree
-alias tree='tree -l'
+alias tree='tree -Cl'
 alias treea='tree -a -I .git'
