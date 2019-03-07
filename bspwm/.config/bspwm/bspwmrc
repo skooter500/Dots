@@ -1,12 +1,15 @@
 #! /bin/sh
 
+# set wallpaper
+feh --bg-fill $HOME/pics/wallpapers/_wall --no-fehbg &
+
 # start the hotkey daemon
 sxhkd &
 
 # setup virtual desktops (on the focused monitor)
 bspc monitor -d I II III IV V VI VII VIII IX X
 
-bspc config border_width	8
+bspc config border_width	10
 bspc config window_gap		40
 
 bspc config click_to_focus	true
