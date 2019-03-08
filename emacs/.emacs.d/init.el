@@ -79,3 +79,11 @@
       (warn "Buffer %s too large to backup - increase value of mike-backup-file-size-limit" (buffer-name)))))
 
 (add-hook 'before-save-hook 'mike-backup-every-save)
+
+
+
+;;;; Symbolic links
+
+;; honestly, I don't know the implications of this one
+;; I just want the yes/no prompt gone
+(setq vc-follow-symlinks t)
