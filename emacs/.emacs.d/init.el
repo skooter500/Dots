@@ -1,3 +1,8 @@
+;;;; Startup Screen
+
+(setq inhibit-startup-screen t)
+
+
 ;;;; User Interface
 
 (tool-bar-mode -1)
