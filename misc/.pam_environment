@@ -1,5 +1,5 @@
 # Environment variables
-# Syntax defined in 'pam_env.conf' man page
+# Syntax defined in "pam_env.conf" man page
 # (Note: end of line comments are not allowed)
 # (Note: ${PATH} is not guaranteed to be available; use @{PATH} instead)
 
@@ -12,7 +12,7 @@ XDG_CONFIG_HOME DEFAULT="@{HOME}/.config"
 XDG_DATA_HOME   DEFAULT="@{HOME}/.local/share"
 
 # default applications
-BROWSER='chromium'
-EDITOR='emacs -nw'
-PAGER='less'
-VISUAL='emacs'
+BROWSER     DEFAULT="chromium"
+EDITOR      DEFAULT="emacs -nw"
+PAGER       DEFAULT="less"
+VISUAL      DEFAULT="emacs"
