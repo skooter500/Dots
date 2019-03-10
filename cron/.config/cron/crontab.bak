@@ -5,5 +5,5 @@
 0	*	*	*	*	trash-empty 30
 # similarly, empty emacs backups and auto-saves
 0	*	*	*	*	$HOME/bin/ibm 7 $HOME/.emacs.d/auto-saves
-0	*	*	*	*	$HOME/bin/ibm 7 $HOME/.emacs.d/backups/per-save > $HOME/test.txt 2>&1
+0	*	*	*	*	$HOME/bin/ibm 7 $HOME/.emacs.d/backups/per-save
 0	*	*	*	*	$HOME/bin/ibm 30 $HOME/.emacs.d/backups/per-session
