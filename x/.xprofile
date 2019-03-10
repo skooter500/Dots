@@ -1,0 +1,2 @@
+# swap caps lock and left control
+setxkbmap -option 'ctrl:swapcaps'
