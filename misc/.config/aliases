@@ -3,7 +3,7 @@
 
 
 # cp
-alias c-='cp -i'
+alias cp-='cp -i'
 
 # diff
 alias diff='diff --color=auto'
