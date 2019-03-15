@@ -12,8 +12,8 @@ super + {_,shift +}space
 
 # web browser
 super + {_,shift + }w
-	firefox{_, --private-window}
-#	chromium{_, --incognito}
+#	firefox{_, --private-window}
+	chromium{_, --incognito}
 
 # file manager
 super + d
