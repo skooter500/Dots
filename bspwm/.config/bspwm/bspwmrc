@@ -17,3 +17,6 @@ bspc config gapless_monocle	true
 
 # per application rules
 bspc rule -a Emacs state=tiled
+
+# start auto-mounter
+udiskie &
