@@ -27,6 +27,11 @@ alias mkdir='mkdir -pv'
 # mv
 alias mv='mv -i'
 
+# power
+alias suspend='systemctl suspend'
+alias hibernate='systemctl hibernate'
+alias logoff='bspc quit'
+
 # printenv
 alias printenv='printenv | sort'
 
