@@ -45,3 +45,6 @@ alias rr='rm -r'
 # tree
 alias tree='tree -Cl'
 alias treea='tree -a -I .git'
+
+# whatis
+alias wi-'whatis'
