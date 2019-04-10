@@ -8,6 +8,11 @@ alias cp-='cp -i'
 # diff
 alias diff='diff --color=auto'
 
+# dirs
+# this arguably shouldn't be here since dirs is a shell builtin;
+#   however, since it's available in sh I'm allowing it
+alias dv='dirs -v | head -20'
+
 # editor
 alias e="$EDITOR"
 alias v="$VISUAL"
