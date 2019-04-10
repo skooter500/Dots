@@ -11,6 +11,9 @@ XDG_CACHE_HOME  DEFAULT="@{HOME}/.cache"
 XDG_CONFIG_HOME DEFAULT="@{HOME}/.config"
 XDG_DATA_HOME   DEFAULT="@{HOME}/.local/share"
 
+# zsh
+ZDOTDIR     DEFAULT="@{HOME}/.zsh"
+
 # default applications
 BROWSER     DEFAULT="chromium"
 EDITOR      DEFAULT="emacs -nw"
