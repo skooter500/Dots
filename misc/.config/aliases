@@ -8,6 +8,10 @@ alias cp-='cp -i'
 # diff
 alias diff='diff --color=auto'
 
+# editor
+alias e="$EDITOR"
+alias v="$VISUAL"
+
 # free
 alias free='free -h'
 
