@@ -10,14 +10,18 @@ super + Return
 super + {_,shift +}space
 	rofi -show {drun,run}
 
+# file manager
+super + d
+	termite -e ranger
+
 # web browser
 super + {_,shift + }w
 #	firefox{_, --private-window}
 	chromium{_, --incognito}
 
-# file manager
-super + d
-	termite -e ranger
+# text editor
+super + {_,shift + }e
+      {$VISUAL, termite -e $EDITOR}
 
 # make sxhkd reload its configuration files:
 super + Delete
