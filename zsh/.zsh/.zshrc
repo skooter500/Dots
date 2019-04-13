@@ -54,3 +54,9 @@ setopt auto_pushd
 
 # match hidden files with asterisk wildcard
 setopt glob_dots
+
+# syntax highlighting
+# should be sourced at the end of .zshrc,
+#   after all custom widgets have been created
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets cursor)
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
