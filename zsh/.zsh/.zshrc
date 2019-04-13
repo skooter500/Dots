@@ -50,4 +50,7 @@ zstyle ':completion:*' menu select
 
 # cd pushes directories to the stack like pushd
 # (because I never remember to use pushd)
-setopt autopushd
+setopt auto_pushd
+
+# match hidden files with asterisk wildcard
+setopt glob_dots
