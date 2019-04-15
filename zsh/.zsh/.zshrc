@@ -20,6 +20,7 @@ bindkey -e
 
 
 # externally defined aliases and functions
+# shared with .bashrc
 source "$XDG_CONFIG_HOME/aliases"
 source "$XDG_CONFIG_HOME/functions"
 
@@ -60,3 +61,10 @@ setopt glob_dots
 #   after all custom widgets have been created
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# colourise zsh directory completion
+# LS_COLORS needs to be set because zsh was colouring directories red
+#   instead of ls' blue. It got all the other colours right though.
+#   I'm confused.
+eval $(dircolors -b)
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
