@@ -1,0 +1,365 @@
+#+TITLE:	Emacs Configuration
+#+AUTHOR:	Michael Dunleavy
+#+EMAIL:	michaelldunleavy@gmail.com
+
+# Mark all source blocks for compilation.
+#+PROPERTY: header-args  :tangle yes
+
+# Put comments in output file to denote sections.
+#+PROPERTY: header-args+ :comments yes
+
+# Prevent evaluation results from being appended to ~init.org~.
+#+PROPERTY: header-args+ :results silent
+
+# Compile ~init.el~ whenever ~init.org~ is saved in Emacs.
+# Local Variables:
+# eval: (add-hook 'after-save-hook 'org-babel-tangle nil t)
+# End:
+
+
+* Preface
+
+This is an Org file containing my Emacs configuration. Whenever this
+file is saved in Emacs it will automatically collect all of this
+document's code snippets into a new ~init.el~. It does so by calling
+the function =org-babel-tangle=. =org-babel-tangle= will need to be
+called manually for first-time setup.
+
+The code which compiles ~init.org~ to ~init.el~ is in located above
+this preface but may not be visible if you are viewing a rendered
+version of this document.
+
+* Customize
+
+~Customize~ is Emacs' system for GUI-based configuration. I do not use
+it directly but some modes automatically edit it. This code moves
+Customize's state out of ~init.el~ to a separate file.
+
+#+BEGIN_SRC emacs-lisp
+  (setq custom-file "~/.emacs.d/custom.el")
+  (load custom-file)
+#+END_SRC
+
+
+* Package Management
+
+** Prerequisites
+
+Package's are a built-in feature since Emacs 24 (although they were
+available earlier).
+
+#+BEGIN_SRC emacs-lisp
+  (require 'package)
+#+END_SRC
+
+
+** MELPA
+
+Add MELPA to the package archives list. Use https if possible,
+elsewise warn and use http. Taken from
+https://melpa.org/#/getting-started .
+
+#+BEGIN_SRC emacs-lisp
+  (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
+			  (not (gnutls-available-p))))
+	 (proto (if no-ssl "http" "https")))
+	(when no-ssl
+	  (warn "\
+  Your version of Emacs does not support SSL connections,
+  which is unsafe because it allows man-in-the-middle attacks.
+  There are two things you can do about this warning:
+  1. Install an Emacs version that does support SSL and be safe.
+  2. Remove this warning from your init file so you won't see it again."))
+	;; Comment/uncomment these two lines to enable/disable MELPA and
+	;; MELPA Stable as desired
+	(add-to-list 'package-archives
+				 (cons "melpa" (concat proto "://melpa.org/packages/")) t)
+	;;(add-to-list 'package-archives
+	;;             (cons "melpa-stable" (concat proto "://stable.melpa.org/packages/")) t)
+	(when (< emacs-major-version 24)
+	  ;; For important compatibility libraries like cl-lib
+	  (add-to-list 'package-archives
+				   (cons "gnu" (concat proto "://elpa.gnu.org/packages/")))))
+#+END_SRC
+
+
+** Early Package Initialization
+
+By default packages are initialized (ie. loaded and activated) after
+~init.el~ is run. Manually initializing them early makes them available
+for use in ~init.el~.
+
+#+BEGIN_SRC emacs-lisp
+  (package-initialize)
+#+END_SRC
+
+
+** use-package
+
+https://github.com/jwiegley/use-package
+
+~use-package~ is a package configuration tool.
+
+The following code checks that use-package is installed and downloads
+it if it isn't. This is done entirely with Emacs' built-in package
+management tools. All other packages should be setup with use-package
+instead.
+
+#+BEGIN_SRC emacs-lisp
+  (unless (package-installed-p 'use-package)
+	(package-refresh-contents)
+	(package-install 'use-package))
+  (eval-when-compile
+	(require 'use-package))
+#+END_SRC
+
+
+** Try
+
+https://github.com/larstvei/Try
+
+~Try~ allows you to try download and use a package without permanently
+saving it to your system. It lets you try packages without installing
+them.
+
+#+BEGIN_SRC emacs-lisp
+  (use-package try
+	:ensure t)
+#+END_SRC
+
+
+** which-key
+
+https://github.com/justbur/emacs-which-key
+
+Displays suggestions for unfinished key-bindings.
+
+#+BEGIN_SRC emacs-lisp
+  (use-package which-key
+	:ensure t
+	:config (which-key-mode))
+#+END_SRC
+
+
+* User Interface
+
+** Startup Screen
+
+Do not open the ~About GNU Emacs~ splash screen on startup
+
+#+BEGIN_SRC emacs-lisp
+  (setq inhibit-startup-screen t)
+#+END_SRC
+
+
+** Tool-bar & Menu-bar
+
+The tool-bar provides pictorial icons for editing tasks like save and
+undo. The menu-bar provides textual drop-down menus for a wider range
+of tasks. Active modes may add menu-bar menus. Many users find both
+bars obstuctive and babyish. I do however like the contextual menu-bar
+entries. They are useful in unfamiliar modes.
+
+#+BEGIN_SRC emacs-lisp
+  (tool-bar-mode -1)
+  ;;(menu-bar-mode -1)
+#+END_SRC
+
+
+** Scroll-bar
+
+Disable the graphical scrollbar. I find it unnecessary, given the
+keyboard navigation options and the row information on the mode line.
+
+#+BEGIN_SRC emacs-lisp
+  (scroll-bar-mode -1)
+#+END_SRC
+
+
+** Column numbers
+
+Add column numbers next to row numbers on the mode line.
+
+#+BEGIN_SRC emacs-lisp
+  (column-number-mode)
+#+END_SRC
+
+
+* Editing
+
+** Indentation and Whitespace
+
+*** Tabs vs Spaces
+
+Prefer spaces for ~prog-mode~, a superclass of all programming
+modes. Default to tabs otherwise.
+
+#+BEGIN_SRC emacs-lisp
+  (add-hook 'prog-mode-hook (lambda ()
+							  (setq indent-tabs-mode nil)))
+#+END_SRC
+
+
+*** Indentation Width
+
+#+BEGIN_SRC emacs-lisp
+  (setq-default tab-width 4)
+#+END_SRC
+
+
+*** Indentation Behaviour
+
+#+BEGIN_SRC emacs-lisp
+  ;; TAB only indents when point is at the start of a line
+  (setq-default tab-always-indent nil)
+
+  ;; newlines don't indent the previous line
+  ;;(setq-default electric-indent-inhibit t)
+#+END_SRC
+
+
+*** Whitespace Deletion
+
+#+BEGIN_SRC emacs-lisp
+  ;; backspace deletes all whitespace at once
+  ;; consider writing/stealing a backspace-to-tab-stop function
+  (setq backward-delete-char-untabify-method 'hungry)
+#+END_SRC
+
+
+*** Trailing Whitespace
+
+#+BEGIN_SRC emacs-lisp
+  (setq-default show-trailing-whitespace t)
+#+END_SRC
+
+
+* Auto-saves and Backups
+
+** Auto-saves
+
+#+BEGIN_QUOTE
+	By default, Emacs automatically saves your changes to a file
+	intermittently. If anything should happen, you can recover a file
+	with ~M-x recover-file~.
+
+	...
+
+	By default, auto-save files are stored in the current directory
+	with a file name on the form ~#file#~. If you don’t want to
+	clutter up your file tree with Emacs' backup files, you can save
+	them to a dedicated directory
+
+	--- https://emacswiki.org/emacs/AutoSave
+#+END_QUOTE
+
+The following code sets the auto-save location to a single,
+out-of-the-way directory.
+
+#+BEGIN_SRC emacs-lisp
+  (defvar mike-auto-save-location
+	(expand-file-name "~/.emacs.d/auto-saves/")
+	"Base directory for auto save files.")
+  (setq auto-save-file-name-transforms
+		`((".*" ,mike-auto-save-location t)))
+#+END_SRC
+
+
+** Backups
+
+Taken from
+http://pragmaticemacs.com/emacs/auto-save-and-backup-every-save . See
+link for walkthrough.
+
+Emacs can automatically back-up old versions of files when changes are
+saved.
+
+#+BEGIN_QUOTE
+	By default the backup file is made in the same directory as the
+	original with a name like ~file~~. The way the backup works is
+	that Emacs makes a copy of a file the first time you save it in an
+	Emacs session. It only makes that one backup though, so this is
+	not very useful if you keep your session running for a long time
+	and want to recover an earlier version of a file.
+
+	--- http://pragmaticemacs.com/emacs/auto-save-and-backup-every-save
+#+END_QUOTE
+
+The following code:
+- Moves autosaves to a single, out-of-the-way location
+- Sets up backups after every save
+- Allows multiple backups of the same file to co-exist
+- Numbers backups
+- Copies the first backup of each session to a separate directory
+- Prevents backups of files over a certain size
+
+These backups will pile up over time unless regularly
+purged. Currently I use a cron-job to delete that are over 1 week old.
+
+#+BEGIN_SRC emacs-lisp
+  ;; custom backup location
+  ;; will contain sub-directories for per-session and per-save backups
+  (defvar mike-backup-location (expand-file-name "~/.emacs.d/backups/")
+	"Base directory for backup files.")
+
+  ;; set default/per-save backup location
+  (setq backup-directory-alist
+	`((".*" . ,(expand-file-name "per-save/" mike-backup-location))))
+
+  (setq
+   backup-by-copying t        ; don't clobber symlinks
+   kept-new-versions 1000     ; keep n latest versions
+   kept-old-versions 0        ; don't bother with old versions
+   delete-old-versions t      ; don't ask about deleting old versions
+   version-control t          ; number backups
+   vc-make-backup-files t)    ; backup version controlled files
+
+  (defvar mike-backup-file-size-limit (* 5 1024 1024)
+	"Maximum size of a file (in bytes) that should be copied at each savepoint.")
+
+  (defun mike-backup-every-save ()
+	"Backup files every time they are saved, as well as at the start of each session"
+
+	;; when at start of session
+	(when (not buffer-backed-up)
+	  ;; settings for per-session backup
+	  (let ((backup-directory-alist
+			 `((".*" . ,(expand-file-name "per-session/" mike-backup-location))))
+			(kept-new-versions 1000))
+
+		;; make a per-session backup
+		(if (<= (buffer-size) mike-backup-file-size-limit)
+			(progn
+			  (message "Made per-session backup of %s" (buffer-name))
+			  (backup-buffer))
+		  (warn
+		   "Buffer %s too large to backup - increase value of mike-backup-file-size-limit"
+		   (buffer-name)))))
+
+	;; always
+	(let ((buffer-backed-up nil))
+	  (if (<= (buffer-size) mike-backup-file-size-limit)
+		  (progn
+			(message "Made per-save backup of %s" (buffer-name))
+			(backup-buffer))
+		(warn
+		 "Buffer %s too large to backup - increase value of mike-backup-file-size-limit"
+		 (buffer-name)))))
+
+  (add-hook 'before-save-hook 'mike-backup-every-save)
+#+END_SRC
+
+
+* Misc
+
+** Symbolic links
+
+Disable warning about following symbolic links to version controlled
+directories.
+
+#+BEGIN_SRC emacs-lisp
+  ;; honestly, I don't know the full implications of this one
+  ;; I just want the yes/no prompt gone
+  (setq vc-follow-symlinks t)
+#+END_SRC
+
