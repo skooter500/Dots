@@ -2,32 +2,33 @@
 #+AUTHOR:	Michael Dunleavy
 #+EMAIL:	michaelldunleavy@gmail.com
 
-# Mark all source blocks for compilation.
-#+PROPERTY: header-args  :tangle yes
-
-# Put comments in output file to denote sections.
-#+PROPERTY: header-args+ :comments yes
-
-# Prevent evaluation results from being appended to ~init.org~.
-#+PROPERTY: header-args+ :results silent
-
-# Compile ~init.el~ whenever ~init.org~ is saved in Emacs.
-# Local Variables:
-# eval: (add-hook 'after-save-hook 'org-babel-tangle nil t)
-# End:
-
 
 * Preface
 
 This is an Org file containing my Emacs configuration. Whenever this
 file is saved in Emacs it will automatically collect all of this
 document's code snippets into a new ~init.el~. It does so by calling
-the function =org-babel-tangle=. =org-babel-tangle= will need to be
-called manually for first-time setup.
+the function =org-babel-tangle=.
 
-The code which compiles ~init.org~ to ~init.el~ is in located above
-this preface but may not be visible if you are viewing a rendered
-version of this document.
+The code which configures this document and calls =org-babel-tangle=
+is located at the end of this document.
+
+
+* Header
+
+Warn readers of ~init.el~ not to modify ~init.el~ directly.
+
+#+BEGIN_SRC emacs-lisp :comments no
+  ;;
+  ;; DO NOT MODIFY THIS FILE DIRECTLY.
+  ;; This file was automatically generated from init.org using babel.
+  ;; Configuration should be done through init.org.
+  ;; init.org will automatically generate new versions of this file,
+  ;; overwriting any changes made outside of init.org.
+  ;;
+
+#+END_SRC
+
 
 * Customize
 
@@ -176,7 +177,7 @@ keyboard navigation options and the row information on the mode line.
 #+END_SRC
 
 
-** Column numbers
+** Column Numbers
 
 Add column numbers next to row numbers on the mode line.
 
@@ -187,7 +188,7 @@ Add column numbers next to row numbers on the mode line.
 
 * Editing
 
-** Indentation and Whitespace
+** Indentation & Whitespace
 
 *** Tabs vs Spaces
 
@@ -234,7 +235,7 @@ modes. Default to tabs otherwise.
 #+END_SRC
 
 
-* Auto-saves and Backups
+* Auto-saves & Backups
 
 ** Auto-saves
 
@@ -352,7 +353,7 @@ purged. Currently I use a cron-job to delete that are over 1 week old.
 
 * Misc
 
-** Symbolic links
+** Symbolic Links
 
 Disable warning about following symbolic links to version controlled
 directories.
@@ -360,6 +361,58 @@ directories.
 #+BEGIN_SRC emacs-lisp
   ;; honestly, I don't know the full implications of this one
   ;; I just want the yes/no prompt gone
-  (setq vc-follow-symlinks t)
+  (setq vc-follow-symlinks nil)
 #+END_SRC
 
+
+* init.org
+
+** Org-mode Properties
+
+*** Tangling
+
+Mark all source blocks for compilation.
+
+#+BEGIN_SRC org :tangle no
+  #+PROPERTY: header-args  :tangle yes
+#+END_SRC
+#+PROPERTY: header-args  :tangle yes
+
+
+*** Comments
+
+Put comments in output file to denote sections.
+
+#+BEGIN_SRC org :tangle no
+  #+PROPERTY: header-args+ :comments yes
+#+END_SRC
+#+PROPERTY: header-args+ :comments yes
+
+
+*** Results
+
+Prevent evaluation results from being appended to ~init.org~.
+
+#+BEGIN_SRC org :tangle no
+  #+PROPERTY: header-args+ :results silent
+#+END_SRC
+#+PROPERTY: header-args+ :results silent
+
+
+** Emacs File Local Variables
+
+Compile ~init.el~ whenever ~init.org~ is saved in Emacs.
+
+~The start of the local variables list should be no more than 3000
+characters from the end of the file...~ I had a very unpleasant time
+figururing that out.
+
+#+BEGIN_SRC org :tangle no
+  # Local Variables:
+  # eval: (add-hook 'after-save-hook 'org-babel-tangle nil t)
+  # End:
+#+END_SRC
+
+# Local Variables:
+# eval: (add-hook 'after-save-hook 'org-babel-tangle nil t)
+# End:
