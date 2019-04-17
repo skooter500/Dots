@@ -247,6 +247,16 @@ modes. Default to tabs otherwise.
 #+END_SRC
 
 
+** Pretty Symbols
+
+~Minor mode for drawing multi-character tokens as Unicode glyphs
+(e.g. lambda -> λ).~
+
+#+BEGIN_SRC emacs-lisp
+  (global-prettify-symbols-mode 1)
+#+END_SRC
+
+
 * Auto-saves & Backups
 
 ** Auto-saves
