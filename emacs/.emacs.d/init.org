@@ -142,6 +142,18 @@ Displays suggestions for unfinished key-bindings.
 #+END_SRC
 
 
+** htmlize
+
+https://github.com/hniksic/emacs-htmlize
+
+Exports buffers to HTML.
+
+#+BEGIN_SRC emacs-lisp
+  (use-package htmlize
+	:ensure t)
+#+END_SRC
+
+
 * User Interface
 
 ** Startup Screen
