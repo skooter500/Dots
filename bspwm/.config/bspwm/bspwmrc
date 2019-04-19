@@ -12,8 +12,8 @@ bspc monitor -d I II III IV V VI VII VIII IX X
 bspc config border_width	10
 bspc config window_gap		40
 
-bspc config click_to_focus	true
-bspc config gapless_monocle	true
+bspc config focus_follows_pointer	true
+bspc config gapless_monocle		true
 
 # per application rules
 bspc rule -a Emacs state=tiled
