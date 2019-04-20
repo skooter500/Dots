@@ -154,6 +154,24 @@ Exports buffers to HTML.
 #+END_SRC
 
 
+** Base16
+
+https://github.com/chriskempson/base16
+https://github.com/belak/base16-emacs
+
+A format for color schemes with 8 achromatic shades for backgrounds
+and foregrounds and 8 colorful accents for highlights. There are many
+schemes available online and it's not hard to define your own.
+
+I use the Python package ~pybase16-builder~ to manage schemes across
+Emacs and multiple other applications.
+
+#+BEGIN_SRC emacs-lisp
+  (use-package base16-theme
+	:ensure t)
+#+END_SRC
+
+
 * User Interface
 
 ** Startup Screen
@@ -195,6 +213,63 @@ Add column numbers next to row numbers on the mode line.
 
 #+BEGIN_SRC emacs-lisp
   (column-number-mode)
+#+END_SRC
+
+
+* Theme
+
+[[https://github.com/chriskempson/base16][Base16]] theming auto-configured for Emacs and other applications with
+[[https://github.com/InspectorMustache/base16-builder-python][base16-builder-python]]. Theme is automatically inserted between the
+=base16_template= and =base16_template_end= comments by
+running =pybase16 inject ...= from the shell.
+
+#+BEGIN_SRC emacs-lisp
+;; %%base16_template: emacs##default %%
+;; base16-ocean-theme.el -- A base16 colorscheme
+
+;;; Commentary:
+;; Base16: (https://github.com/chriskempson/base16)
+
+;;; Authors:
+;; Scheme: Chris Kempson (http://chriskempson.com)
+;; Template: Kaleb Elwert <belak@coded.io>
+
+;;; Code:
+
+(require 'base16-theme)
+
+(defvar base16-ocean-colors
+  '(:base00 "#2b303b"
+    :base01 "#343d46"
+    :base02 "#4f5b66"
+    :base03 "#65737e"
+    :base04 "#a7adba"
+    :base05 "#c0c5ce"
+    :base06 "#dfe1e8"
+    :base07 "#eff1f5"
+    :base08 "#bf616a"
+    :base09 "#d08770"
+    :base0A "#ebcb8b"
+    :base0B "#a3be8c"
+    :base0C "#96b5b4"
+    :base0D "#8fa1b3"
+    :base0E "#b48ead"
+    :base0F "#ab7967")
+  "All colors for Base16 Ocean are defined here.")
+
+;; Define the theme
+(deftheme base16-ocean)
+
+;; Add all the faces to the theme
+(base16-theme-define 'base16-ocean base16-ocean-colors)
+
+;; Mark the theme as provided
+(provide-theme 'base16-ocean)
+
+(provide 'base16-ocean-theme)
+
+;;; base16-ocean-theme.el ends here
+;; %%base16_template_end%%
 #+END_SRC
 
 
