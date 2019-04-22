@@ -14,7 +14,7 @@ while read -r line ; do
 			;;
 		T*)
 			# xtitle output
-			title="%{F$COLOR_TITLE_FG}%{B$COLOR_TITLE_BG} ${line#?} %{B-}%{F-}"
+			title="%{F$COLOR_TITLE_FG}%{B$COLOR_TITLE_BG} $(echo ${line#?} | ellipsis 64) %{B-}%{F-}"
 			;;
 		W*)
 			# bspwm's state
@@ -107,7 +107,7 @@ while read -r line ; do
 						;;
 					[LTG]*)
 						# layout, state and flags
-						wm="${wm}%{F$COLOR_STATE_FG}%{B$COLOR_STATE_BG} ${name} %{B-}%{F-}"
+						#wm="${wm}%{F$COLOR_STATE_FG}%{B$COLOR_STATE_BG} ${name} %{B-}%{F-}"
 						;;
 				esac
 				shift

@@ -1,0 +1,11 @@
+#! /bin/sh
+
+# Truncate stdin if it is longer than $1 characters long and replace
+# the last 3 characters with '...'
+# eg: echo 'Hello world' | ellipsis 10  ->  Hello w...
+# eg: echo 'Hello world' | ellipsis 11  ->  Hello world
+
+awk -v len=${1-70} '{ if (length($0) > len)
+                        print substr($0, 1, len-3) "...";
+                      else
+                        print; }'
