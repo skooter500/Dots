@@ -9,6 +9,13 @@ sxhkd &
 # setup virtual desktops (on the focused monitor)
 bspc monitor -d I II III IV V VI VII VIII IX X
 
+# start baskerville's lemonbar panel
+PATH="$PATH:$HOME/.config/bspwm/panel"
+echo $PATH > "$HOME/path.tmp"
+source panel_profile
+[ -e "$PANEL_FIFO" ] && bspc subscribe report > "$PANEL_FIFO" &
+pgrep -x panel > /dev/null || panel &
+
 bspc config border_width	10
 bspc config window_gap		40
 

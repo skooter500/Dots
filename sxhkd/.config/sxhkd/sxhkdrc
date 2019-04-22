@@ -56,7 +56,7 @@ XF86Audio{Prev,Play,Next}
 
 # quit bspwm normally
 super + alt + Escape
-	bspc quit
+	pkill -x panel; bspc quit
 
 # close and kill
 super + {_,shift + }Escape
