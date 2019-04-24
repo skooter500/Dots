@@ -25,5 +25,8 @@ bspc config gapless_monocle		true
 # per application rules
 bspc rule -a Emacs state=tiled
 
+# start compositor
+compton -b
+
 # start auto-mounter
 udiskie &

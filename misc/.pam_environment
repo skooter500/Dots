@@ -21,4 +21,7 @@ PAGER       DEFAULT="less"
 VISUAL      DEFAULT="emacs"
 
 # enable touchscreen scrolling in firefox
-MOZ_USE_XINPUT2	DEFAULT=1
+MOZ_USE_XINPUT2     DEFAULT=1
+
+# window opacity, for use with compton
+OPACITY     DEFAULT=0.85

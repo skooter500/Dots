@@ -1,6 +1,8 @@
 #! /bin/sh
 set -e
 
+OPACITY=${OPACITY:-0.85}
+
 cd "$XDG_DATA_HOME/pybase16"
 
 # inject color scheme into config files
@@ -14,3 +16,7 @@ emacs --batch --eval "(progn
                         (setq vc-follow-symlinks nil)
                         (org-babel-tangle-file
                          \"/home/mike/.emacs.d/init.org\"))"
+
+# inject alpha value to termite's background color
+sed -i -E "s/(background.*\=.*rgba\(.*)\)/\1, $OPACITY\)/" \
+    "$XDG_CONFIG_HOME/termite/config"
