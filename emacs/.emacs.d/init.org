@@ -172,6 +172,20 @@ Emacs and multiple other applications.
 #+END_SRC
 
 
+** Org Bullets
+
+https://github.com/sabof/org-bullets
+
+Provides pretty Unicode bullet points for Org mode headings.
+
+#+BEGIN_SRC emacs-lisp
+  (use-package org-bullets
+	:commands org-bullets-mode
+	:ensure t
+	:hook org-mode)
+#+END_SRC
+
+
 * User Interface
 
 ** Startup Screen
