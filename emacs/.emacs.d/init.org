@@ -476,6 +476,26 @@ directories.
 #+END_SRC
 
 
+* Org
+
+** Indentation
+
+Indent text according to outline structure. (Calls =org-indent-mode=.)
+
+#+BEGIN_SRC emacs-lisp
+  (setq org-startup-indented t)
+#+END_SRC
+
+
+** Emphasis
+
+Hide emphasis marker characters (such as '/'s for italics).
+
+#+BEGIN_SRC emacs-lisp
+  (setq org-hide-emphasis-markers t)
+#+END_SRC
+
+
 * init.org
 
 ** Org-mode Properties
