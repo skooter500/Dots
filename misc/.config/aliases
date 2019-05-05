@@ -40,6 +40,9 @@ alias fgrep='fgrep --color=auto'
 alias ls='ls --color=auto'
 alias ll='ls -AFhl'
 alias la='ls -A'
+alias l1='ls -1'
+alias l1a='ls -1A'
+alias lca='lc -A'           # see functions for lc
 
 # mkdir
 alias mkdir='mkdir -pv'

@@ -5,13 +5,43 @@ bc1() {
 }
 
 
+# ls
+# Count entries from ls
+lc() {
+    flags=""
+    files=""
+    fileC=0
+
+    # separate flags and files
+    for arg in $@; do
+        case $arg in
+            -*)
+                flags="$flags $arg" ;;
+            *)
+                files="$files $arg"
+                ((fileC++))
+                ;;
+        esac
+    done
+
+    if [ $fileC -gt 1 ] ; then
+        for file in $files; do
+            c=$(ls -1 $flags $file | wc -l)
+            echo "$file: $c"
+        done
+    else
+        ls -1 $flags $files | wc -l
+    fi
+}
+
+
 # mkdir / cd
 # Make a directory and change into it
 # All arguments are given to mkdir
 # Only the last argument is given to cd
 mkcd() {
     mkdir "$@"
-    cd "${@: -1}"
+    cd "${@##* }"   # ${@##* } == last word of $@
 }
 
 
@@ -26,11 +56,12 @@ sortip() {
 
     # separate flags and files
     for arg in $@; do
-        if [[ ${arg::1} == '-' ]] ; then
-            flags="$flags $arg"
-        else
-            files="$files $arg"
-        fi
+        case $arg in
+            -*)
+                flags="$flags $arg" ;;
+            *)
+                files="$files $arg" ;;
+        esac
     done
 
     for file in $files; do

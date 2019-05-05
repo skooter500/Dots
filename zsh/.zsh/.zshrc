@@ -22,7 +22,7 @@ bindkey -e
 # externally defined aliases and functions
 # shared with .bashrc
 source "$XDG_CONFIG_HOME/aliases"
-source "$XDG_CONFIG_HOME/functions"
+emulate sh -c 'source "$XDG_CONFIG_HOME/functions"'
 
 # separate command completions by group
 zstyle ':completion:*' group-name ''
