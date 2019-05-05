@@ -1,2 +1,6 @@
 # swap caps lock and left control
 setxkbmap -option 'ctrl:swapcaps'
+
+# typematic delay
+# xset r rate <initial-delay (ms)> <repeat-freq (Hz)>
+xset r rate 500 40
