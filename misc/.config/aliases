@@ -1,20 +1,10 @@
 # Set of shell aliases
 # Meant to be sourced by interactive POSIX shells (ie. from .bashrc and .zshrc)
 
-# cd
-alias ..='cd ..'
-alias .1='cd ..'
-alias .2='cd ../..'
-alias .3='cd ../../..'
-alias .4='cd ../../../..'
-alias .5='cd ../../../../..'
-alias .6='cd ../../../../../..'
-alias .7='cd ../../../../../../..'
-alias .8='cd ../../../../../../../..'
-alias .9='cd ../../../../../../../../..'
 
 # cp
-alias cp-='cp -i'
+alias cp='cp -i'
+alias cr='cp -r'
 
 # diff
 alias diff='diff --color=auto'
@@ -25,30 +15,46 @@ alias diff='diff --color=auto'
 alias dv='dirs -v | head -20'
 
 # editor
-alias e="$EDITOR"
-alias v="$VISUAL"
+alias e="$EDITOR"   # terminal text editor
+alias v="$VISUAL"   # GUI text editor
 
 # free
 alias free='free -h'
 
 # grep
-alias grep='grep --color=auto'
-alias egrep='egrep --color=auto'
-alias fgrep='fgrep --color=auto'
+# case sensitive
+alias Grep='\grep --color=auto'
+alias eGrep='\egrep --color=auto'
+alias fGrep='\fgrep --color=auto'
+# case insensitive
+alias grep='Grep -i'
+alias egrep='eGrep -i'
+alias fgrep='fGrep -i'
+# shorthand
+alias g='grep'
+alias ge='egrep'
+alias gf='fgrep'
 
 # ls
 alias ls='ls --color=auto'
-alias ll='ls -AFhl'
-alias la='ls -A'
-alias l1='ls -1'
+alias la='ls -A'            # include hidden files
+alias ll='ls -AFhl'         # long format
+alias l1='ls -1'            # one entry per line
 alias l1a='ls -1A'
 alias lca='lc -A'           # see functions for lc
+
+# man
+alias manf='man -f'     # equivalent to whatis
+alias mank='man -k'     # equivalent to apropos
 
 # mkdir
 alias mkdir='mkdir -pv'
 
 # mv
 alias mv='mv -i'
+
+# pager
+alias p="$PAGER"
 
 # power
 alias suspend='systemctl suspend'
@@ -68,6 +74,12 @@ alias rr='rm -r'
 # tree
 alias tree='tree -Cl'
 alias treea='tree -a -I .git'
+
+# wc
+alias wcc='wc -c'   # bytes
+alias wcm='wc -m'   # characters
+alias wcw='wc -w'   # words
+alias wcl='wc -l'   # lines
 
 # whatis
 alias wi='whatis'

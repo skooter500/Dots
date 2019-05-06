@@ -68,3 +68,8 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 #   I'm confused.
 eval $(dircolors -b)
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+
+# global aliases
+# aliases that can occur anywhere in a command,
+#   not just the first word
+alias -g ¦='| grep'
