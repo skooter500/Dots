@@ -21,7 +21,7 @@ super + {_,shift + }w
 
 # text editor
 super + {_,shift + }e
-      {$VISUAL, termite -e $EDITOR}
+	{$VISUAL, termite -e $EDITOR}
 
 # make sxhkd reload its configuration files:
 super + Delete
@@ -163,3 +163,11 @@ super + {Left,Down,Up,Right}
 # rotate a node
 super + {_,shift + }r
 	bspc node -R {90,-90}
+
+# equalize splits
+super + {_,shift + }equal
+	bspc node {_,@/} -E
+
+# balance areas
+super + {_,shift + }minus
+	bspc node {_,@/} -B

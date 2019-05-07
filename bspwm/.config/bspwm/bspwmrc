@@ -21,6 +21,9 @@ bspc config window_gap      40
 bspc config focus_follows_pointer   true
 bspc config gapless_monocle         true
 
+bspc config pointer_action2     resize_corner
+bspc config pointer_action3     resize_side
+
 # per application rules
 bspc rule -a Emacs state=tiled
 
