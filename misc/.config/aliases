@@ -71,6 +71,9 @@ alias py='python'
 alias rm='rm -I'
 alias rr='rm -r'
 
+# sed
+alias sed='sed -E'  # extended regex
+
 # tree
 alias tree='tree -Cl'
 alias treea='tree -a -I .git'
