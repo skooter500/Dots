@@ -345,6 +345,16 @@ modes. Default to tabs otherwise.
 #+END_SRC
 
 
+** Parentheses
+
+Highlight pairs of matching parentheses when the point is on one of
+them.
+
+#+BEGIN_SRC emacs-lisp
+  (show-paren-mode 1)
+#+END_SRC
+
+
 * Auto-saves & Backups
 
 ** Auto-saves
