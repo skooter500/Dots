@@ -8,7 +8,8 @@ cd "$XDG_DATA_HOME/pybase16"
 # inject color scheme into config files
 pybase16 inject -s "schemes/$1.yaml" \
          -f "$HOME/.emacs.d/init.org" \
-         -f "$XDG_CONFIG_HOME/termite/config"
+         -f "$XDG_CONFIG_HOME/termite/config" \
+         -f "$XDG_CONFIG_HOME/dunst/dunstrc"
 
 # tangle Emacs' init.org -> init.el
 emacs --batch --eval "(progn
