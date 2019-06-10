@@ -16,7 +16,8 @@ super + d
 
 # web browser
 super + {_, shift+} w
-#	firefox{_, --private-window}
+	firefox{_, --private-window}
+super + ctrl + {_, shift+} w
 	chromium{_, --incognito}
 
 # text editor

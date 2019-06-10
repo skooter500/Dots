@@ -1,7 +1,8 @@
 # Environment variables
-# Syntax defined in "pam_env.conf" man page
-# (Note: end of line comments are not allowed)
-# (Note: ${PATH} is not guaranteed to be available; use @{PATH} instead)
+# Syntax defined in pam_env.conf (5) man page
+# (Note: End of line comments are not allowed)
+# (Note: ${PATH} is not guaranteed to be available
+#        Use @{PATH} instead)
 
 # additions to path
 PATH    DEFAULT="${PATH}:@{HOME}/bin:@{HOME}/.local/bin"
@@ -15,7 +16,7 @@ XDG_DATA_HOME   DEFAULT="@{HOME}/.local/share"
 ZDOTDIR     DEFAULT="@{HOME}/.zsh"
 
 # default applications
-BROWSER     DEFAULT="chromium"
+BROWSER     DEFAULT="firefox"
 EDITOR      DEFAULT="emacs -nw"
 PAGER       DEFAULT="less"
 VISUAL      DEFAULT="emacs"
