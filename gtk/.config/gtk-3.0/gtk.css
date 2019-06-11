@@ -1,0 +1,11 @@
+/*
+  Widen the scrollbar.
+  The default is unusably thin on HiDPI.
+*/
+scrollbar, scrollbar button, scrollbar slider {
+    /*-GtkScrollbar-has-backward-stepper: true;*/
+    /*-GtkScrollbar-has-forward-stepper: true;*/
+    min-width: 30px;
+    min-height: 30px;
+    border-radius: 0;
+}
