@@ -9,3 +9,12 @@ scrollbar, scrollbar button, scrollbar slider {
     min-height: 30px;
     border-radius: 0;
 }
+
+/*
+  Termite (terminal emulator) internal padding.
+  The rest of termite's config is done from
+  $XDG_CONFIG_DIRS/termite/config .
+*/
+.termite {
+    padding: 10px;
+}
