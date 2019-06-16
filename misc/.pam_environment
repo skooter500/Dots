@@ -5,7 +5,7 @@
 #        Use @{PATH} instead)
 
 # additions to path
-PATH    DEFAULT="${PATH}:@{HOME}/bin:@{HOME}/.local/bin"
+PATH    DEFAULT="@{PATH}:@{HOME}/bin:@{HOME}/.local/bin"
 
 # xdg base directories
 XDG_CACHE_HOME  DEFAULT="@{HOME}/.cache"
