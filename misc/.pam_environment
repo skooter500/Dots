@@ -26,3 +26,8 @@ MOZ_USE_XINPUT2     DEFAULT=1
 
 # window opacity, for use with compton
 OPACITY     DEFAULT=0.85
+
+# less
+LESS            DEFAULT="-R"
+LESSOPEN        DEFAULT="| /usr/bin/src-hilite-lesspipe.sh %s"
+LESSHISTFILE    DEFAULT="/dev/null"
