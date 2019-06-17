@@ -1,0 +1,79 @@
+/* Firefox rice.
+   Courtesy of the good folks at r/FirefoxCSS.
+   Tweaked and twiddled by Michael Dunleavy. */
+
+
+/***** Media Queries *****/
+
+/* One-liner layout if window is wide enough */
+@media screen and (min-width: 720px) {
+  #nav-bar {
+    margin-top: -32px !important;
+    margin-right: 50vw !important;
+  }
+  #TabsToolbar {      
+    margin-left: 50vw !important;
+  }
+  .tabbrowser-tab {
+    height: 32px !important;
+  }
+}
+
+
+/***** Tab-bar *****/
+
+/* Shrink tab width as needed */
+.tabbrowser-tab {
+  --tab-min-width: fit-content !important;
+}
+
+/* Slightly reduce tab padding */
+.tab-content {
+  padding: 0 6px !important;
+}
+
+/* Remove highlight above active and hovered tabs */
+.tab-line {
+  display: none !important;
+}
+
+/* Remove 1px border above tabs */
+.tab-background {
+  border: 0 !important;
+}
+
+
+/***** Nav-bar *****/
+
+/* Nav-bar widget order */
+/* Hamburger menu */
+#PanelUI-button {
+  -moz-box-ordinal-group: 0 !important;
+}
+/* Overflow menu */
+#nav-bar-overflow-button {
+  -moz-box-ordinal-group: 1 !important;
+}
+/* URL-bar and customisable buttons.
+   Buttons can be laid out from the Customize menu. */
+#nav-bar-customization-target {
+  -moz-box-ordinal-group: 2 !important;
+}
+
+/* Hide 'Forward Page' button */
+#forward-button {
+  display: none !important;
+}
+
+/* Remove minimum URL-bar width */
+#urlbar-container {
+  min-width: 0 !important;
+}
+
+
+/***** Context Menu *****/
+
+/* Enlarge context menu */
+menu, menuitem, menucaption {
+  font-size: 11pt !important;
+}
