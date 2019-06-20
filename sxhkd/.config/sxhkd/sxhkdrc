@@ -24,9 +24,10 @@ super + ctrl + {_, shift+} w
 super + {_, shift+} e
 	{$VISUAL, termite -e $EDITOR}
 
-# make sxhkd reload its configuration files:
+# make sxhkd reload its configuration files
 super + Delete
-	pkill -USR1 -x sxhkd
+	pkill -USR1 -x sxhkd; \
+	notify-send 'Reloading sxhkdrc'
 
 
 #
@@ -35,16 +36,16 @@ super + Delete
 
 # screen backlight
 XF86MonBrightness{Down,Up}
-	xbacklight -{dec,inc} 10
+	$XDG_CONFIG_HOME/sxhkd/backlight {-,+}10
+#	xbacklight -{dec,inc} 10;
 
 # toggle mute volume
 XF86AudioMute
-	pactl set-sink-mute @DEFAULT_SINK@ toggle
+	$XDG_CONFIG_HOME/sxhkd/mute
 
 # lower/raise volume
 XF86Audio{Lower,Raise}Volume
-	pactl set-sink-mute @DEFAULT_SINK@ false; \
-	pactl set-sink-volume @DEFAULT_SINK@ {-,+}5%
+	$XDG_CONFIG_HOME/sxhkd/volume {-,+}5
 
 # media control
 XF86Audio{Prev,Play,Next}

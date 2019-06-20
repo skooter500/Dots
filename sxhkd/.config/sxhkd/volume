@@ -1,0 +1,12 @@
+#! /bin/sh
+set -e
+
+pactl set-sink-mute @DEFAULT_SINK@ false
+pactl set-sink-volume @DEFAULT_SINK@ $1%
+
+# bafflingly, pactl doesn't have a --get-sink-volume option
+# use pulsemixer's --get-volume instead
+if [ -x $(command -v pulsemixer) ]; then
+    vol=$(pulsemixer --get-volume | cut -f1 -d' ')
+    notify-send "Volume: $vol%" -h int:value:$vol -h string:synchronous:volume
+fi

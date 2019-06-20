@@ -1,0 +1,14 @@
+#! /bin/sh
+set -e
+
+sign=${1%${1#?}}    # 1st char of $1
+case "$sign" in
+    +) flag=' -inc' ;;
+    -) flag='-dec' ;;
+    *) echo 'Invalid argument' >&2; exit 1 ;;
+esac
+
+xbacklight $flag ${1#?}
+
+bl=$(printf '%.0f' $(xbacklight -get))
+notify-send "Backlight: $bl%" -h int:value:$bl -h string:synchronous:backlight

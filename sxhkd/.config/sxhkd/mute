@@ -1,0 +1,17 @@
+#! /bin/sh
+set -e
+
+pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+# bafflingly, pactl doesn't have a --get-sink-mute option
+# use pulsemixer's --get-mute instead
+if [ -x $(command -v pulsemixer) ]; then
+    mute=$(pulsemixer --get-mute)
+    if [ "$mute" -eq '1' ]; then
+        msg='Volume muted'
+    else
+        vol=$(pulsemixer --get-volume | cut -f1 -d' ')
+        msg="Volume unmuted ($vol%)"
+    fi
+    notify-send "$msg" -h int:value:$mute
+fi
