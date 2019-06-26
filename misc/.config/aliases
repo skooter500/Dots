@@ -57,6 +57,7 @@ alias mv='mv -i'
 alias p="$PAGER"
 
 # power
+alias lock='light-locker-command -l'
 alias suspend='systemctl suspend'
 alias hibernate='systemctl hibernate'
 alias logoff='bspc quit'

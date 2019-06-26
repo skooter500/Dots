@@ -1,3 +1,7 @@
+# light-locker
+# screen locker for lightdm
+light-locker&
+
 # swap caps lock and left control
 setxkbmap -option 'ctrl:swapcaps'
 
