@@ -3,6 +3,9 @@
 # .pam_environment's syntax sucks. This file is for commands I can't
 # express in .pam_environment.
 
+# additions to path
+export PATH="${PATH}:${HOME}/bin:${HOME}/.local/bin"
+
 # less
 # colourise text effects (thus colourising man pages)
 export LESS_TERMCAP_mb=$'\e[1;31m'  # start blink       -> bold, red

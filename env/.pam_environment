@@ -1,19 +1,14 @@
 # Environment variables
 # Syntax defined in pam_env.conf (5) man page
 # (Note: End of line comments are not allowed)
-# (Note: ${PATH} is not guaranteed to be available
-#        Use @{PATH} instead)
-
-# additions to path
-PATH    DEFAULT="@{PATH}:@{HOME}/bin:@{HOME}/.local/bin"
 
 # xdg base directories
-XDG_CACHE_HOME  DEFAULT="@{HOME}/.cache"
-XDG_CONFIG_HOME DEFAULT="@{HOME}/.config"
-XDG_DATA_HOME   DEFAULT="@{HOME}/.local/share"
+XDG_CACHE_HOME  DEFAULT="/home/mike/.cache"
+XDG_CONFIG_HOME DEFAULT="/home/mike/.config"
+XDG_DATA_HOME   DEFAULT="/home/mike/.local/share"
 
 # zsh
-ZDOTDIR     DEFAULT="@{HOME}/.zsh"
+ZDOTDIR     DEFAULT="/home/mike/.zsh"
 
 # default applications
 BROWSER     DEFAULT="firefox"
