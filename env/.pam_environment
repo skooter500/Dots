@@ -1,0 +1,33 @@
+# Environment variables
+# Syntax defined in pam_env.conf (5) man page
+# (Note: End of line comments are not allowed)
+# (Note: ${PATH} is not guaranteed to be available
+#        Use @{PATH} instead)
+
+# additions to path
+PATH    DEFAULT="@{PATH}:@{HOME}/bin:@{HOME}/.local/bin"
+
+# xdg base directories
+XDG_CACHE_HOME  DEFAULT="@{HOME}/.cache"
+XDG_CONFIG_HOME DEFAULT="@{HOME}/.config"
+XDG_DATA_HOME   DEFAULT="@{HOME}/.local/share"
+
+# zsh
+ZDOTDIR     DEFAULT="@{HOME}/.zsh"
+
+# default applications
+BROWSER     DEFAULT="firefox"
+EDITOR      DEFAULT="emacs -nw"
+PAGER       DEFAULT="less"
+VISUAL      DEFAULT="emacs"
+
+# enable touchscreen scrolling in firefox
+MOZ_USE_XINPUT2     DEFAULT=1
+
+# window opacity, for use with compton
+OPACITY     DEFAULT=0.85
+
+# less
+LESS            DEFAULT="-R"
+LESSOPEN        DEFAULT="| /usr/bin/src-hilite-lesspipe.sh %s"
+LESSHISTFILE    DEFAULT="/dev/null"

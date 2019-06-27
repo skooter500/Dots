@@ -1,35 +1,9 @@
-# I've opted to move away from .pam_environment for portability
-# reasons. The impetus for this is Debian (or in my case Raspbian)
-# choosing not to enable .pam_environment. Plus, the pam_env syntax
-# annoys me.
-
-# additions to path
-export PATH="${PATH}:${HOME}/bin:${HOME}/.local/bin"
-
-# xdg base directories
-export XDG_CACHE_HOME="${HOME}/.cache"
-export XDG_CONFIG_HOME="${HOME}/.config"
-export XDG_DATA_HOME="${HOME}/.local/share"
-
-# zsh
-export ZDOTDIR="${HOME}/.zsh"
-
-# default applications
-export BROWSER='firefox'
-export EDITOR='emacs -nw'
-export PAGER='less'
-export VISUAL='emacs'
-
-# enable touchscreen scrolling in firefox
-export MOZ_USE_XINPUT2=1
-
-# window opacity, for use with compton
-export OPACITY=0.85
+# .pam_environment should be used instead of .profile where possible.
+# This is because .pam_environment gets loaded earlier. Unfortunately,
+# .pam_environment's syntax sucks. This file is for commands I can't
+# express in .pam_environment.
 
 # less
-export LESS='-R'
-export LESSOPEN='| /usr/bin/src-hilite-lesspipe.sh %s'
-export LESSHISTFILE='/dev/null'
 # colourise text effects (thus colourising man pages)
 export LESS_TERMCAP_mb=$'\e[1;31m'  # start blink       -> bold, red
 export LESS_TERMCAP_md=$'\e[1;32m'  # start bold        -> bold, green
