@@ -73,3 +73,8 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 # aliases that can occur anywhere in a command,
 #   not just the first word
 alias -g ¦='| grep'
+
+# key bindings
+# Bind Delete, Home, Insert, etc. to their expected behaviours.
+# Defined externally for brevity.
+source .zsh/key-bindings
