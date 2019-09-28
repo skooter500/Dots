@@ -75,8 +75,8 @@ https://melpa.org/#/getting-started .
 	;; MELPA Stable as desired
 	(add-to-list 'package-archives
 				 (cons "melpa" (concat proto "://melpa.org/packages/")) t)
-	;;(add-to-list 'package-archives
-	;;             (cons "melpa-stable" (concat proto "://stable.melpa.org/packages/")) t)
+	(add-to-list 'package-archives
+	             (cons "melpa-stable" (concat proto "://stable.melpa.org/packages/")) t)
 	(when (< emacs-major-version 24)
 	  ;; For important compatibility libraries like cl-lib
 	  (add-to-list 'package-archives
@@ -182,6 +182,37 @@ Provides pretty Unicode bullet points for Org mode headings.
   (use-package org-bullets
     :ensure t
     :hook (org-mode . org-bullets-mode))
+#+END_SRC
+
+
+** Scala Ensime
+
+https://ensime.github.io/
+
+Provides Scala (and Java) IDE features.
+
+#+BEGIN_SRC emacs-lisp
+  (use-package ensime
+    :ensure t
+    :pin melpa-stable)
+#+END_SRC
+
+Disable startup notification
+#+BEGIN_SRC emacs-lisp
+  (setq ensime-startup-notification nil)
+#+END_SRC
+
+
+** Onmisharp
+
+https://github.com/OmniSharp/omnisharp-emacs
+
+Provides C# IDE features
+
+#+BEGIN_SRC emacs-lisp
+  (use-package omnisharp
+    :ensure t
+    :hook (csharp-mode . omnisharp-mode))
 #+END_SRC
 
 
