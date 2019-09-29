@@ -185,24 +185,6 @@ Provides pretty Unicode bullet points for Org mode headings.
 #+END_SRC
 
 
-** Scala Ensime
-
-https://ensime.github.io/
-
-Provides Scala (and Java) IDE features.
-
-#+BEGIN_SRC emacs-lisp
-  (use-package ensime
-    :ensure t
-    :pin melpa-stable)
-#+END_SRC
-
-Disable startup notification
-#+BEGIN_SRC emacs-lisp
-  (setq ensime-startup-notification nil)
-#+END_SRC
-
-
 ** Onmisharp
 
 https://github.com/OmniSharp/omnisharp-emacs
@@ -225,6 +207,35 @@ Academic referencing tool for org-mode.
 #+BEGIN_SRC emacs-lisp
   (use-package org-ref
     :ensure t)
+#+END_SRC
+
+
+** flycheck
+
+https://www.flycheck.org/en/latest/
+
+Syntax checker.
+
+#+BEGIN_SRC emacs-lisp
+    (use-package flycheck
+      :ensure t
+      :init (global-flycheck-mode t))
+#+END_SRC
+
+
+** Company
+
+https://company-mode.github.io/
+
+Auto-completion engine.
+
+#+BEGIN_SRC emacs-lisp
+    (use-package company
+      :ensure t
+      :hook (prog-mode . company-mode)
+      :config
+      (setq company-idle-delay 0)
+      (setq company-minimum-prefix-length 1))
 #+END_SRC
 
 
