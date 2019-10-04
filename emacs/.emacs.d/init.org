@@ -464,6 +464,16 @@ them.
 #+END_SRC
 
 
+** Spelling
+
+Enable spell-checking by default for text modes.
+
+#+BEGIN_SRC emacs-lisp
+  (add-hook 'text-mode-hook
+            (lambda () (flyspell-mode 1)))
+#+END_SRC
+
+
 * Auto-saves & Backups
 
 ** Auto-saves
