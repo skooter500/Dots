@@ -254,6 +254,46 @@ Expand the selected region by semantic units.
 #+END_SRC
 
 
+** dired-sidebar
+
+https://github.com/jojojames/dired-sidebar
+
+File manager sidebar.
+
+#+BEGIN_SRC emacs-lisp
+  (use-package dired-sidebar
+    :bind (("M-\\" . dired-sidebar-toggle-sidebar))
+    :ensure t
+    :commands (dired-sidebar-toggle-sidebar)
+    :init
+    (unbind-key "M-\\")
+    (add-hook 'dired-sidebar-mode-hook
+              (lambda ()
+                (unless (file-remote-p default-directory)
+                  (auto-revert-mode))))
+    :config
+    (push 'toggle-window-split dired-sidebar-toggle-hidden-commands)
+    (push 'rotate-windows dired-sidebar-toggle-hidden-commands)
+    (setq dired-sidebar-subtree-line-prefix "__")
+    (setq dired-sidebar-theme 'vscode)
+    (setq dired-sidebar-use-term-integration t))
+#+END_SRC
+
+
+** VsCode Icons
+
+https://github.com/jojojames/vscode-icon-emacs
+https://github.com/vscode-icons/vscode-icons
+
+File icon set. (Useful for dired.)
+
+#+BEGIN_SRC emacs-lisp
+  (use-package vscode-icon
+    :ensure t
+    :commands (vscode-icon-for-file))
+#+END_SRC
+
+
 * User Interface
 
 ** Startup Screen
